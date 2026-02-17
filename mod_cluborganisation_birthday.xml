@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" client="site" method="upgrade">
+    <name>mod_cluborganisation_birthday</name>
+    <author>Christian Schulz</author>
+    <creationDate>February 2026</creationDate>
+    <license>GNU General Public License version 3 or later</license>
+    <authorEmail>technik@meinetechnikwelt.rocks</authorEmail>
+    <authorUrl>https://www.meinetechnikwelt.rocks</authorUrl>
+    <version>1.0.0</version>
+    <description>MOD_CLUBORGANISATION_BIRTHDAY_XML_DESCRIPTION</description>
+    <namespace path="src">CSOSCD\Module\ClubOrganisationBirthday</namespace>
+
+    <files>
+        <filename module="mod_cluborganisation_birthday">mod_cluborganisation_birthday.php</filename>
+        <folder>services</folder>
+        <folder>src</folder>
+        <folder>tmpl</folder>
+    </files>
+
+    <languages folder="language">
+        <language tag="de-DE">de-DE/de-DE.mod_cluborganisation_birthday.ini</language>
+        <language tag="de-DE">de-DE/de-DE.mod_cluborganisation_birthday.sys.ini</language>
+        <language tag="en-GB">en-GB/en-GB.mod_cluborganisation_birthday.ini</language>
+        <language tag="en-GB">en-GB/en-GB.mod_cluborganisation_birthday.sys.ini</language>
+    </languages>
+
+    <config>
+        <fields name="params">
+            <fieldset name="basic" label="JBASIC">
+                <field
+                    name="days_future"
+                    type="number"
+                    label="MOD_CLUBORGANISATION_BIRTHDAY_DAYS_FUTURE_LABEL"
+                    description="MOD_CLUBORGANISATION_BIRTHDAY_DAYS_FUTURE_DESC"
+                    default="30"
+                    min="1"
+                    max="365"
+                    filter="uint"
+                />
+                <field
+                    name="title_today"
+                    type="text"
+                    label="MOD_CLUBORGANISATION_BIRTHDAY_TITLE_TODAY_LABEL"
+                    description="MOD_CLUBORGANISATION_BIRTHDAY_TITLE_TODAY_DESC"
+                    default=""
+                    filter="string"
+                />
+                <field
+                    name="title_upcoming"
+                    type="text"
+                    label="MOD_CLUBORGANISATION_BIRTHDAY_TITLE_UPCOMING_LABEL"
+                    description="MOD_CLUBORGANISATION_BIRTHDAY_TITLE_UPCOMING_DESC"
+                    default=""
+                    filter="string"
+                />
+                <field
+                    name="show_days_in_title"
+                    type="radio"
+                    label="MOD_CLUBORGANISATION_BIRTHDAY_SHOW_DAYS_IN_TITLE_LABEL"
+                    description="MOD_CLUBORGANISATION_BIRTHDAY_SHOW_DAYS_IN_TITLE_DESC"
+                    default="1"
+                    layout="joomla.form.field.radio.switcher"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field
+                    name="hide_today_if_empty"
+                    type="radio"
+                    label="MOD_CLUBORGANISATION_BIRTHDAY_HIDE_TODAY_IF_EMPTY_LABEL"
+                    description="MOD_CLUBORGANISATION_BIRTHDAY_HIDE_TODAY_IF_EMPTY_DESC"
+                    default="0"
+                    layout="joomla.form.field.radio.switcher"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field
+                    name="hide_upcoming_if_empty"
+                    type="radio"
+                    label="MOD_CLUBORGANISATION_BIRTHDAY_HIDE_UPCOMING_IF_EMPTY_LABEL"
+                    description="MOD_CLUBORGANISATION_BIRTHDAY_HIDE_UPCOMING_IF_EMPTY_DESC"
+                    default="0"
+                    layout="joomla.form.field.radio.switcher"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field
+                    name="show_age"
+                    type="radio"
+                    label="MOD_CLUBORGANISATION_BIRTHDAY_SHOW_AGE_LABEL"
+                    description="MOD_CLUBORGANISATION_BIRTHDAY_SHOW_AGE_DESC"
+                    default="1"
+                    layout="joomla.form.field.radio.switcher"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+            </fieldset>
+            <fieldset name="advanced">
+                <field
+                    name="layout"
+                    type="modulelayout"
+                    label="JFIELD_ALT_LAYOUT_LABEL"
+                    class="form-select"
+                />
+                <field
+                    name="moduleclass_sfx"
+                    type="textarea"
+                    label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+                    rows="3"
+                />
+                <field
+                    name="cache"
+                    type="list"
+                    label="COM_MODULES_FIELD_CACHING_LABEL"
+                    default="0"
+                >
+                    <option value="1">JGLOBAL_USE_GLOBAL</option>
+                    <option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+                </field>
+                <field
+                    name="cache_time"
+                    type="number"
+                    label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+                    default="900"
+                    filter="uint"
+                />
+            </fieldset>
+        </fields>
+    </config>
+</extension>
