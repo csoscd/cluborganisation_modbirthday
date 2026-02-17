@@ -8,6 +8,7 @@
  * @var  array   $today                  Personen mit Geburtstag heute
  * @var  array   $future                 Personen mit Geburtstag in den nächsten Tagen
  * @var  int     $days                   Konfigurierter Zeitraum in Tagen
+ * @var  bool    $show_upcoming          Abschnitt "Bevorstehend" aktiviert ja/nein
  * @var  bool    $hide_today_if_empty    Abschnitt "Heute" ausblenden wenn leer
  * @var  bool    $hide_upcoming_if_empty Abschnitt "Bevorstehend" ausblenden wenn leer
  * @var  string  $title_today            Benutzerdefinierte Überschrift für "Heute"
@@ -41,7 +42,7 @@ if ($title_upcoming !== '') {
 
 // ── Sektions-Sichtbarkeit ───────────────────────────────────────────────────
 $showToday    = !($hide_today_if_empty    && empty($today));
-$showUpcoming = !($hide_upcoming_if_empty && empty($future));
+$showUpcoming = $show_upcoming && !($hide_upcoming_if_empty && empty($future));
 ?>
 
 <div class="mod-cluborganisation-birthday<?php echo $moduleclass_sfx ? ' ' . $moduleclass_sfx : ''; ?>">

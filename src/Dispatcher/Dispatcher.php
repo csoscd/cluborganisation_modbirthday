@@ -29,8 +29,11 @@ class Dispatcher extends AbstractModuleDispatcher
         $helper->setDatabase($db);
 
         $data['today']              = $helper->getTodayBirthdays($params, $this->getApplication());
-        $data['future']             = $helper->getFutureBirthdays($params, $this->getApplication());
+        $data['future']             = (bool) $params->get('show_upcoming', 1)
+                                        ? $helper->getFutureBirthdays($params, $this->getApplication())
+                                        : [];
         $data['days']               = (int) $params->get('days_future', 30);
+        $data['show_upcoming']          = (bool) $params->get('show_upcoming', 1);
         $data['hide_today_if_empty']    = (bool) $params->get('hide_today_if_empty', 0);
         $data['hide_upcoming_if_empty'] = (bool) $params->get('hide_upcoming_if_empty', 0);
         $data['title_today']        = trim($params->get('title_today', ''));

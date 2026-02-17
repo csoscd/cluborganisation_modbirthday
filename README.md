@@ -14,7 +14,7 @@ Zeigt Geburtstage von aktiven Vereinsmitgliedern im Frontend an:
 - **Bevorstehende Geburtstage** – wer hat in den nächsten X Tagen Geburtstag?
 
 Nur Personen mit einer **aktiven Mitgliedschaft** werden angezeigt.  
-Verstorbene Personen (`deceased IS NOT NULL`) werden ausgeblendet.
+Verstorbene Personen werden ausgeblendet.
 
 ---
 
@@ -23,24 +23,6 @@ Verstorbene Personen (`deceased IS NOT NULL`) werden ausgeblendet.
 - Joomla 5 oder 6
 - ClubOrganisation-Komponente (com_cluborganisation) installiert
 - PHP 8.1+
-- Personen-Tabelle `#__cluborganisation_persons` mit Feld `birthday` (DATE)
-
----
-
-## Installation
-
-```bash
-# 1. Quellcode-Verzeichnis aufrufen
-cd /pfad/zum/quellcode
-
-# 2. Build-Script ausführen
-chmod +x auto_install.sh
-./auto_install.sh
-
-# 3. ZIP installieren
-# Backend → System → Install → Extensions
-# → Upload: /opt/mod_cluborganisation_birthday_v1.0.0.zip
-```
 
 ---
 
@@ -50,7 +32,14 @@ chmod +x auto_install.sh
 
 | Parameter | Standard | Beschreibung |
 |-----------|----------|--------------|
-| **Tage in die Zukunft** | 30 | Wie viele Tage bevorstehende Geburtstage angezeigt werden |
+| **Tage in die Zukunft** | 30 | Wie viele Tage bevorstehende Geburtstage angezeigt werden (1–365) |
+| **Überschrift „Heute"** | *(leer)* | Eigene Überschrift für den Heute-Abschnitt; leer = Standardtext |
+| **Überschrift „Bevorstehend"** | *(leer)* | Eigene Überschrift für den Bevorstehend-Abschnitt; leer = Standardtext |
+| **Zeitraum in Überschrift anzeigen** | Ja | Hängt „(nächste X Tage)" an die Überschrift des Bevorstehend-Abschnitts |
+| **„Heute" ausblenden wenn leer** | Nein | Blendet den Heute-Abschnitt komplett aus, wenn heute niemand Geburtstag hat |
+| **Bevorstehende Geburtstage anzeigen** | Ja | Bevorstehenden Abschnitt anzeigen oder komplett deaktivieren |
+| **„Bevorstehend" ausblenden wenn leer** | Nein | Blendet den Bevorstehend-Abschnitt aus, wenn im Zeitraum niemand Geburtstag hat |
+| **Alter anzeigen** | Ja | Zeigt das neue Alter in Klammern an, z. B. „(wird 42)" |
 
 ### Advanced-Tab
 
@@ -58,53 +47,6 @@ Standard-Joomla Modul-Optionen (Layout, CSS-Suffix, Caching).
 
 ---
 
-## Projektstruktur
-
-```
-mod_cluborganisation_birthday.xml     ← Joomla-Manifest
-mod_cluborganisation_birthday.php     ← Einstiegsdatei
-auto_install.sh                       ← Build & Package Script
-services/
-└── provider.php                      ← Service Provider (DI)
-src/
-├── Dispatcher/
-│   └── Dispatcher.php               ← Daten aufbereiten & Template-Vars
-└── Helper/
-    └── BirthdayHelper.php           ← Datenbankabfragen
-tmpl/
-└── default/
-    └── default.php                  ← Frontend-Template
-language/
-├── de-DE/
-│   ├── de-DE.mod_cluborganisation_birthday.ini
-│   └── de-DE.mod_cluborganisation_birthday.sys.ini
-└── en-GB/
-    ├── en-GB.mod_cluborganisation_birthday.ini
-    └── en-GB.mod_cluborganisation_birthday.sys.ini
-```
-
----
-
-## Build-Script Konventionen
-
-Alle Source-Dateien liegen **flach im Quellordner** mit folgenden Namen:
-
-| Datei im Quellordner | Ziel im Modul |
-|----------------------|---------------|
-| `mod_cluborganisation_birthday.xml` | `mod_cluborganisation_birthday.xml` |
-| `mod_cluborganisation_birthday.php` | `mod_cluborganisation_birthday.php` |
-| `services_provider.php` | `services/provider.php` |
-| `Dispatcher.php` | `src/Dispatcher/Dispatcher.php` |
-| `BirthdayHelper.php` | `src/Helper/BirthdayHelper.php` |
-| `tmpl_default.php` | `tmpl/default/default.php` |
-| `de-DE.mod_cluborganisation_birthday.ini` | `language/de-DE/...` |
-| `de-DE.mod_cluborganisation_birthday.sys.ini` | `language/de-DE/...` |
-| `en-GB.mod_cluborganisation_birthday.ini` | `language/en-GB/...` |
-| `en-GB.mod_cluborganisation_birthday.sys.ini` | `language/en-GB/...` |
-
----
-
 ## Autor
 
-**Christian Schulz**  
-technik@meinetechnikwelt.rocks
+**Christian Schulz**

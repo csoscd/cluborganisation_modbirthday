@@ -76,6 +76,17 @@
                     <option value="0">JNO</option>
                 </field>
                 <field
+                    name="show_upcoming"
+                    type="radio"
+                    label="MOD_CLUBORGANISATION_BIRTHDAY_SHOW_UPCOMING_LABEL"
+                    description="MOD_CLUBORGANISATION_BIRTHDAY_SHOW_UPCOMING_DESC"
+                    default="1"
+                    layout="joomla.form.field.radio.switcher"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field
                     name="hide_upcoming_if_empty"
                     type="radio"
                     label="MOD_CLUBORGANISATION_BIRTHDAY_HIDE_UPCOMING_IF_EMPTY_LABEL"
@@ -130,4 +141,10 @@
             </fieldset>
         </fields>
     </config>
+    <updateservers>
+        <server type="extension" priority="1" name="ClubOrganisation Birthday Module Updates">
+            https://www.meinetechnikwelt.rocks/cluborganisation/cluborganisation_birthday.xml
+        </server>
+    </updateservers>
+
 </extension>
